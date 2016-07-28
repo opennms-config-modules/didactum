@@ -19,7 +19,8 @@ The configuration adds capabilities for SNMP traps with and performance data col
 ----
 mkdir /tmp
 cd /tmp
-curl https://github.com/opennms-config-modules/didactum/archive/master.tar.gz | tar xz
+curl -L https://github.com/opennms-config-modules/didactum-monitoring-system-2/archive/1.0.tar.gz | tar xz
+cd didactum-1.0/
 ----
 
 ## Enable SNMP trap support
@@ -27,33 +28,33 @@ curl https://github.com/opennms-config-modules/didactum/archive/master.tar.gz | 
 .Copy into OpenNMS configuration folders
 [source, bash]
 ----
-cp events/didactum.events.xml ${OPENNMS_HOME}/etc/events
+cp events/didactum-monitoring-system-2.events.xml ${OPENNMS_HOME}/etc/events
 ----
 
 .Add include statement as first entry in ${OPENNMS_HOME}/etc/eventconf.xml
 [source, bash]
 ----
-<event-file>events/didactum.events.xml</event-file>
+<event-file>events/didactum-monitoring-system-2.events.xml</event-file>
 ----
 
 ## Enable performance data collection
 
 [source, bash]
 ----
-cp datacollection/didactum.xml ${OPENNMS_HOME}/etc/datacollection
+cp datacollection/didactum-monitoring-system-2.xml ${OPENNMS_HOME}/etc/datacollection
 ----
 
 .Add include statement in alphabetical order in ${OPENNMS_HOME}/etc/datacollection-config.xml
 [source, bash]
 ----
-<include-collection dataCollectionGroup="Didactum"/>
+<include-collection dataCollectionGroup="Didactum-Monitoring-System-2"/>
 ----
 
 ## Add performance graphs
 
 [source, bash]
 ----
-cp snmp-graph.properties.d/didactum-graph-graph.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d/
+cp snmp-graph.properties.d/didactum-monitoring-system-2-graph.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d/
 ----
 
 # License & Authors
