@@ -1,4 +1,4 @@
-<datacollection-group xmlns="http://xmlns.opennms.org/xsd/config/datacollection" name="Didactum-Monitoring-System-2">
+<datacollection-group xmlns="https://xmlns.opennms.org/xsd/config/datacollection" name="Didactum-Monitoring-System-2">
     <resourceType name="ctlIntSensAnlEnt" label="Internal Sensors Analog" resourceLabel="${ctlIntSensAnlName}">
         <persistenceSelectorStrategy class="org.opennms.netmgt.collection.support.PersistAllSelectorStrategy"/>
         <storageStrategy class="org.opennms.netmgt.collection.support.IndexStorageStrategy"/>

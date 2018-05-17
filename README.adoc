@@ -1,4 +1,4 @@
-# Didactum Monitoring System II
+= Didactum Monitoring System II
 
 OpenNMS configuration module to support monitoring for Didactum devices.
 The configuration adds capabilities for SNMP traps with and performance data collection for the following metrics:
@@ -7,58 +7,53 @@ The configuration adds capabilities for SNMP traps with and performance data col
 - Humidity
 - Voltage
 
-## Requirements
+== Requirements
 
 - Monitoring System II 100 / 500
 - OpenNMS Meridian 2015+ or OpenNMS Horizon 14+
 
-## Download the configuration package
+== Installation
 
-.Download the configuration files
+.Download and install from GitHub
 [source, bash]
 ----
-mkdir /tmp
-cd /tmp
-curl -L https://github.com/opennms-config-modules/didactum-monitoring-system-2/archive/master.tar.gz | tar xz
-cd didactum-monitoring-system-2-master
+mkdir ${HOME}/opennms-config-workspace
+cd ${HOME}/opennms-config-workspace
+git clone https://github.com/opennms-config-modules/akcp.git
 ----
 
-## Enable SNMP trap support
+=== Events
 
-.Copy into OpenNMS configuration folders
+.Install events
 [source, bash]
 ----
-cp events/didactum-monitoring-system-2.events.xml ${OPENNMS_HOME}/etc/events
+cp ${HOME}/opennms-config-workspace/didactum-monitoring-system-2/events/*.xml ${OPENNMS_HOME}/etc/events
 ----
 
-.Add include statement as first entry in ${OPENNMS_HOME}/etc/eventconf.xml
-[source, bash]
+.Include in eventconf.xml
+[source, xml]
 ----
 <event-file>events/didactum-monitoring-system-2.events.xml</event-file>
 ----
 
-## Enable performance data collection
+=== Data Collection
 
+.Install datacollection configuration
 [source, bash]
 ----
-cp datacollection/didactum-monitoring-system-2.xml ${OPENNMS_HOME}/etc/datacollection
+cp ${HOME}/opennms-config-workspace/didactum-monitoring-system-2/datacollection/*.xml ${OPENNMS_HOME}/etc/datacollection
 ----
 
-.Add include statement in alphabetical order in ${OPENNMS_HOME}/etc/datacollection-config.xml
-[source, bash]
+.Include in datacollection-config.xml
+[source, xml]
 ----
 <include-collection dataCollectionGroup="Didactum-Monitoring-System-2"/>
 ----
 
-## Add performance graphs
+=== Graph Report Definitions
 
+.Install graph report definitions
 [source, bash]
 ----
-cp snmp-graph.properties.d/didactum-monitoring-system-2-graph.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d/
+cp ${HOME}/opennms-config-workspace/didactum-monitoring-system-2/graphs/*.properties ${OPENNMS_HOME}/etc/snmp-graph.properties.d
 ----
-
-# License & Authors
-
-- Author:: Marcel Fuhrmann <fuhrmann@n3rd.org>
-
-Licensed under the GNU Affero General Public License 3+. You may obtain a copy of the License at http://www.gnu.org/licenses/agpl-3.0.html.
